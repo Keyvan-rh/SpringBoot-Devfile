@@ -13,7 +13,6 @@ metadata:
   projectType: springboot
   language: Java
   provider: Red Hat
-  supportUrl: https://github.com/devfile-samples/devfile-support#support-information
 parent:
   id: java-springboot
   registryUrl: 'https://registry.devfile.io'
