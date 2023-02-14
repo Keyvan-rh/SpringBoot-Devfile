@@ -33,11 +33,7 @@ components:
       deployment/memoryLimit: 300Mi
       deployment/memoryRequest: 180Mi
       deployment/container-port: 8081
-    openshift:
-      endpoints:
-        - name: http-8081
-          targetPort: 8081
-          path: /
+    
 commands:
   - id: build-image
     apply:
