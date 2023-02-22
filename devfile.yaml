@@ -13,6 +13,27 @@ projects:
       remotes:
         origin: 'https://github.com/RedHatWorkshops/openshiftv4-odo-workshop.git'
 components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      env:
+        - name: QUARKUS_HTTP_HOST
+          value: 0.0.0.0
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: list-all-food
+          protocol: http
+          targetPort: 8080
+          path: /food
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+      memoryLimit: 6G
+      mountSources: true
 
   - name: ubi-minimal
     container:
@@ -34,4 +55,6 @@ components:
           value: food_db
         - name: PGDATA
           value: /tmp/pgdata
-
+  - name: m2
+    volume:
+      size: 1G
